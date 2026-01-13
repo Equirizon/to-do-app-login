@@ -4,14 +4,20 @@ import TaskList from './components/TaskList.tsx';
 import Title from './components/Title.tsx';
 import { useState } from 'react';
 
-
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [value, setValue] = useState('');
+
+  function deleteTask(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <div className="app">
       <Title />
-      <AddTask setTask={setTasks}/>
-      <TaskList tasks={tasks} />
+      {/* prop drilling */}
+      <AddTask value={value} setValue={setValue} setTasks={setTasks} />
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import Task from './Task';
-export default function TaskList({ tasks }) {
+export default function TaskList({ tasks, deleteTask }) {
   return (
     <>
       <div className="tasklist">
-        {tasks.map((task) => (
-          <Task label={task} />
+        {tasks.map((task, i) => (
+          <Task label={task} key={i} deleteTask={deleteTask} />
         ))}
       </div>
     </>
