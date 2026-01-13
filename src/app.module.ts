@@ -5,7 +5,8 @@ import { join } from 'path';
 import { AppController, CatsController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -19,14 +20,15 @@ import { UserModule } from './user/user.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      password: 'simform',
+      password: '1592753',
       username: 'postgres',
       entities: [],
-      database: 'pgWithNest',
+      database: 'to-do-app',
       synchronize: true,
       logging: true,
     }),
-    UserModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController, CatsController],
   providers: [AppService],
